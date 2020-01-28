@@ -6,7 +6,7 @@ import java.util.Objects;
  * Encapsulates a single playing card as a combination of {@link Suit} and {@link Rank}. Instances
  * of this class are immutable
  *
- * @author Trace Decker &amp deepdive coding java+android cohort 9.
+ * @author Trace Decker &amp; deepdive coding java+android cohort 9.
  */
 public class Card {
 

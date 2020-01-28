@@ -7,11 +7,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Creates cards list and dealt list.
+ */
 public class Deck {
 
   private List<Card> cards;
   private List<Card> dealt;
 
+  /**
+   * Initializes the cards {@link Deck} and the dealt {@link Deck}. creates instances of cards and dealt lists based on {@link Suit} and {@link Rank}
+   */
   public Deck() {
     cards = new ArrayList<>();
     dealt = new LinkedList<>();
@@ -22,6 +28,10 @@ public class Deck {
     }
   }
 
+  /**
+   * Iterates through the {@link Deck} of cards until cards is empty.
+   * @return not shuffled Deck of cards
+   */
   public Card deal() {
     Card card = cards.isEmpty() ? null : cards.remove(0);
     if (card != null) {
@@ -30,16 +40,27 @@ public class Deck {
     return card;
   }
 
+  /**
+   * Shuffles the {@link Deck} and adds all cards in the dealt {@link Deck} back to the cards {@link Deck}.
+   * clears the dealt {@link Deck}.
+   * @param rng generates random number to determine the number of times the deck gets shuffled.
+   */
   public void shuffle(Random rng) {
     cards.addAll(dealt);
     dealt.clear();
     Collections.shuffle(cards, rng);
   }
 
+  /**
+   * Returns the size of the cards {@link Deck}.
+   */
   public int remaining() {
     return cards.size();
   }
 
+  /**
+   * Returns the size of the dealt {@link Deck}.
+   */
   public int dealt() {
     return dealt.size();
   }
@@ -47,13 +68,6 @@ public class Deck {
   @Override
   public String toString() {
     return cards.toString();
-  }
-
-  public static void main(String[] args) {
-    Deck deck = new Deck();
-    System.out.println(deck);
-    deck.shuffle(new SecureRandom());
-    System.out.println(deck);
   }
 
 }

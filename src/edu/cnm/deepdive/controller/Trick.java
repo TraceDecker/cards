@@ -23,11 +23,19 @@ public class Trick {
     trick.report();
   }
 
+  /**
+   * Initializes a new instance of {@link Deck}.
+   * Invokes the shuffle() method to shuffle deck a random number of times.
+   */
   private void prepare() {
     deck = new Deck();
     deck.shuffle(rng);
   }
 
+  /**
+   * Initializes new instances of the redPile and blackPile.
+   * Iterates through the entire {@link Deck} until all the cards are split up between the redPile and blackPile.
+   */
   private void split() {
     redPile = new LinkedList<>();
     blackPile = new LinkedList<>();
@@ -40,6 +48,10 @@ public class Trick {
     }
   }
 
+  /**
+   * Invokes the swap() method to remove cards from each pile based on the random number generator.
+   * Adds removed cards from each pile to the opposite pile.
+   */
   private void swap() {
     int swapSize = rng.nextInt(1 + Math.min(blackPile.size(), redPile.size()));
     for (int i = 0; i < swapSize; i++) {
@@ -48,6 +60,11 @@ public class Trick {
     }
   }
 
+  /**
+   * Initializes the instances redCount and blackCount.
+   * Counts the number of red cards in the redPile.
+   * Counts the number of black cards in the blackPile.
+   */
   private void report() {
     int redCount = 0;
     int blackCount = 0;
