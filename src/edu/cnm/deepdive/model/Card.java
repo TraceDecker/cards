@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.model;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Objects;
  *
  * @author Trace Decker &amp; deepdive coding java+android cohort 9.
  */
-public class Card {
+public class Card implements Comparable<Card>{
 
   private final Suit suit;
   private final Rank rank;
@@ -64,4 +65,8 @@ public class Card {
     return comparison;
   }
 
+  @Override
+  public int compareTo(Card other) {
+    return Comparator.comparing(Card::getSuit).thenComparing(Card::getRank).compare(this, other);
+  }
 }
